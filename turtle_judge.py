@@ -6,9 +6,11 @@ import sys
 
 from judge.dodona_command import (
     Context,
+    DodonaException,
     ErrorType,
     Judgement,
     MessageFormat,
+    MessagePermission,
     Tab,
     Test,
     TestCase,
@@ -29,6 +31,14 @@ with Judgement():
     # Set 'solution_file' to "./solution.py" if not set
     config.solution_file = str(getattr(config, "solution_file", "./solution.py"))
     config.solution_file = os.path.join(config.resources, config.solution_file)
+
+    if not os.path.exists(config.solution_file):
+        raise DodonaException(
+            config.translator.error_status(ErrorType.INTERNAL_ERROR),
+            permission=MessagePermission.STAFF,
+            description=f"Could not find solution file: '{config.solution_file}'.",
+            format=MessageFormat.TEXT,
+        )
 
     with Tab("Comparing PNGs"):
         with Context(), TestCase(
