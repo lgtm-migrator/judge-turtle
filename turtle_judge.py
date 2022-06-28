@@ -57,11 +57,11 @@ with Judgement():
             base64_solution = base64.b64encode(svg_solution).decode("utf-8")
 
             html = f"""
-            <div style="display:inline;float:left;min-width:50%;">
+            <div style="display:inline-block;width:50%;">
                 <p style="padding:10px">Submission:</p>
                 <img alt="submission result" src="data:image/svg+xml;base64,{base64_submission}" />
             </div>
-            <div style="display:inline;float:right;min-width:50%;">
+            <div style="display:inline-block;float:right;width:50%;">
                 <p style="padding:10px">Solution:</p>
                 <img alt="solution result" src="data:image/svg+xml;base64,{base64_solution}" />
             </div>
