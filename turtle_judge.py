@@ -59,11 +59,11 @@ with Judgement():
             html = f"""
             <div style="display:inline-block;width:50%;">
                 <p style="padding:10px">Submission:</p>
-                <img alt="submission result" src="data:image/svg+xml;base64,{base64_submission}" />
+                <img alt="submission result" width="100%" style="background-color:#fff" src="data:image/svg+xml;base64,{base64_submission}" />
             </div>
             <div style="display:inline-block;float:right;width:50%;">
                 <p style="padding:10px">Solution:</p>
-                <img alt="solution result" src="data:image/svg+xml;base64,{base64_solution}" />
+                <img alt="solution result" width="100%" style="background-color:#fff" src="data:image/svg+xml;base64,{base64_solution}" />
             </div>
             """
 
