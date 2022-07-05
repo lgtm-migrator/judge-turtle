@@ -1,44 +1,24 @@
 """Turtle runtime."""
 
 import runpy
-import sys
-from io import BytesIO, StringIO
-from typing import Any
+from io import BytesIO
 
 from cairosvg import svg2png  # noqa
 from PIL import Image, ImageChops  # noqa
-from svg_turtle import SvgTurtle  # noqa
-from svg_turtle.canvas import Canvas  # noqa
 
-
-def monkey_patch() -> SvgTurtle:
-    """Monkey patch the turtle module."""
-    cls: Any = SvgTurtle
-    cls._screen = SvgTurtle._Screen(Canvas(1000, 500))  # noqa: W0212
-    cls._pen = SvgTurtle()  # noqa: W0212
-
-    turtle_module: Any = sys.modules["turtle"]
-    turtle_module.mainloop = turtle_module.done = lambda: None
-    turtle_module.Turtle = SvgTurtle
-
-    return cls._pen  # noqa: W0212
+from .runtime_patch import InOutPatch, TimePatch, TurtlePatch
 
 
 def run_file(file_path: str):
     """Run the submission file."""
-    old_in, old_out, old_err = sys.stdin, sys.stdout, sys.stderr
-
-    try:
-        output = StringIO()
-        sys.stdin, sys.stdout, sys.stderr = output, output, output
-
-        turtle_instance = monkey_patch()
-
+    with (
+        TurtlePatch() as turtle,
+        InOutPatch(),
+        TimePatch(),
+    ):
         runpy.run_path(file_path)
 
-        return turtle_instance
-    finally:
-        sys.stdin, sys.stdout, sys.stderr = old_in, old_out, old_err
+        return turtle
 
 
 def generate_svg_byte_stream(file_path: str) -> bytes:
