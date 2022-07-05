@@ -45,10 +45,25 @@ with Judgement():
             format=MessageFormat.PYTHON,
             description="",
         ):
-            svg_submission = generate_svg_byte_stream(config.source)
-            png_submission = generate_png_image(svg_submission)
+            try:
+                svg_submission = generate_svg_byte_stream(config.source)
+            except Exception as e:
+                raise DodonaException(
+                    config.translator.error_status(ErrorType.COMPILATION_ERROR),
+                    description=f"Error executing submission script: '{e}'.",
+                    format=MessageFormat.TEXT,
+                ) from e
+            try:
+                svg_solution = generate_svg_byte_stream(config.solution_file)
+            except Exception as e:
+                raise DodonaException(
+                    config.translator.error_status(ErrorType.COMPILATION_ERROR),
+                    permission=MessagePermission.STAFF,
+                    description=f"Error executing solution script: '{e}'.",
+                    format=MessageFormat.TEXT,
+                ) from e
 
-            svg_solution = generate_svg_byte_stream(config.solution_file)
+            png_submission = generate_png_image(svg_submission)
             png_solution = generate_png_image(svg_solution)
 
             correct_pixels, total_pixels = diff_images(png_submission, png_solution)

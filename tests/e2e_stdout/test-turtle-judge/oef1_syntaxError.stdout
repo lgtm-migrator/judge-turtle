@@ -1,0 +1,43 @@
+{
+ "command": "start-judgement"
+}
+{
+ "command": "start-tab",
+ "title": "Comparing PNGs"
+}
+{
+ "command": "start-context"
+}
+{
+ "command": "start-testcase",
+ "description": {
+  "description": "",
+  "format": "python"
+ }
+}
+{
+ "command": "append-message",
+ "message": {
+  "description": "Error executing submission script: 'unterminated string literal (detected at line 2) (syntaxError.py, line 2)'.",
+  "format": "text"
+ }
+}
+{
+ "accepted": false,
+ "command": "close-testcase"
+}
+{
+ "accepted": false,
+ "command": "close-context"
+}
+{
+ "command": "close-tab"
+}
+{
+ "accepted": false,
+ "command": "close-judgement",
+ "status": {
+  "enum": "compilation error",
+  "human": "Ongeldige query"
+ }
+}
