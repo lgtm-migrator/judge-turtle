@@ -28,6 +28,11 @@ with Judgement():
     # Initiate translator
     config.translator = Translator.from_str(config.natural_language)
 
+    # Set 'canvas_width' to 1000 if not set
+    config.canvas_width = int(getattr(config, "canvas_width", "1000"))
+    # Set 'canvas_height' to 1000 if not set
+    config.canvas_height = int(getattr(config, "canvas_height", "500"))
+
     # Set 'solution_file' to "./solution.py" if not set
     config.solution_file = str(getattr(config, "solution_file", "./solution.py"))
     config.solution_file = os.path.join(config.resources, config.solution_file)
@@ -46,7 +51,7 @@ with Judgement():
             description="",
         ):
             try:
-                svg_submission = generate_svg_byte_stream(config.source)
+                svg_submission = generate_svg_byte_stream(config.source, config.canvas_width, config.canvas_height)
             except Exception as e:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
@@ -54,7 +59,7 @@ with Judgement():
                     format=MessageFormat.TEXT,
                 ) from e
             try:
-                svg_solution = generate_svg_byte_stream(config.solution_file)
+                svg_solution = generate_svg_byte_stream(config.solution_file, config.canvas_width, config.canvas_height)
             except Exception as e:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
@@ -63,8 +68,8 @@ with Judgement():
                     format=MessageFormat.TEXT,
                 ) from e
 
-            png_submission = generate_png_image(svg_submission)
-            png_solution = generate_png_image(svg_solution)
+            png_submission = generate_png_image(svg_submission, config.canvas_width, config.canvas_height)
+            png_solution = generate_png_image(svg_solution, config.canvas_width, config.canvas_height)
 
             correct_pixels, total_pixels = diff_images(png_submission, png_solution)
 

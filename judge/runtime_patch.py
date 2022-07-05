@@ -48,6 +48,11 @@ class Patch(ABC):
 class TurtlePatch(Patch):  # noqa: R0903
     """Patch the turtle module."""
 
+    def __init__(self, width: int, height: int):
+        """Create Turtle patch with provided canvas size."""
+        self.width, self.height = width, height
+        super().__init__()
+
     def patch(self):
         """Patch generator."""
         turtle_mod = sys.modules["turtle"]
@@ -56,7 +61,7 @@ class TurtlePatch(Patch):  # noqa: R0903
         old_done = turtle_mod.done
         old_turtle = turtle_mod.Turtle
         try:
-            SvgTurtle._screen = SvgTurtle._Screen(Canvas(1000, 500))  # noqa: W0212
+            SvgTurtle._screen = SvgTurtle._Screen(Canvas(self.width, self.height))  # noqa: W0212
             SvgTurtle._pen = SvgTurtle()  # noqa: W0212
 
             turtle_mod.mainloop = lambda: None

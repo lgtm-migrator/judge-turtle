@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "oef1",
+            "nl": "oef1"
+        }
+    },
+    "type": "exercise",
+    "evaluation": {
+        "canvas_width": 10,
+        "canvas_height": 10
+    }
+}
