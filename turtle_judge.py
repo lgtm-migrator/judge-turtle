@@ -28,10 +28,10 @@ with Judgement():
     # Initiate translator
     config.translator = Translator.from_str(config.natural_language)
 
-    # Set 'canvas_width' to 1000 if not set
-    config.canvas_width = int(getattr(config, "canvas_width", "1000"))
-    # Set 'canvas_height' to 1000 if not set
-    config.canvas_height = int(getattr(config, "canvas_height", "500"))
+    # Set 'canvas_width' to 400 if not set
+    config.canvas_width = int(getattr(config, "canvas_width", "400"))
+    # Set 'canvas_height' to 250 if not set
+    config.canvas_height = int(getattr(config, "canvas_height", "250"))
 
     # Set 'solution_file' to "./solution.py" if not set
     config.solution_file = str(getattr(config, "solution_file", "./solution.py"))

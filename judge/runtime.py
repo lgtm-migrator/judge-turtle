@@ -4,6 +4,7 @@ import io
 import os
 from io import BytesIO
 
+import numpy as np
 from cairosvg import svg2png  # noqa
 from PIL import Image, ImageChops  # noqa
 
@@ -59,7 +60,10 @@ def diff_images(image1: Image.Image, image2: Image.Image) -> tuple[int, int]:
     """Generate difference between two images, and return the number differing pixels."""
     diff = ImageChops.difference(image1, image2)
 
-    hist = diff.histogram()
-    correct_pixels = hist[256 * 0] + hist[256 * 1] + hist[256 * 2] + hist[256 * 3]
-    total_pixels = sum(hist)
-    return correct_pixels // 4, total_pixels // 4
+    arr = np.array(diff)  # Make into Numpy array
+
+    wrong_pixels = np.count_nonzero(arr.any(axis=-1))
+    total_pixels = arr.shape[0] * arr.shape[1]
+    correct_pixels = total_pixels - wrong_pixels
+
+    return correct_pixels, total_pixels

@@ -61,12 +61,21 @@ class TurtlePatch(Patch):  # noqa: R0903
         old_done = turtle_mod.done
         old_turtle = turtle_mod.Turtle
         try:
-            SvgTurtle._screen = SvgTurtle._Screen(Canvas(self.width, self.height))  # noqa: W0212
-            SvgTurtle._pen = SvgTurtle()  # noqa: W0212
+            screen = SvgTurtle._Screen(Canvas(self.width, self.height))  # noqa: W0212
+            screen.cv.config(bg="")
+
+            class CustomTurtle(SvgTurtle):
+                """Custom Turtle class, of which each instance shares the same screen."""
+
+                def __init__(self):
+                    super().__init__(screen=screen)
+
+            SvgTurtle._screen = screen  # noqa: W0212
+            SvgTurtle._pen = CustomTurtle()  # noqa: W0212
 
             turtle_mod.mainloop = lambda: None
             turtle_mod.done = lambda: None
-            turtle_mod.Turtle = SvgTurtle
+            turtle_mod.Turtle = CustomTurtle
 
             yield SvgTurtle._pen  # noqa: W0212
         finally:
