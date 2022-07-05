@@ -1,22 +1,43 @@
 """Turtle runtime."""
 
-import runpy
+import io
+import os
 from io import BytesIO
 
 from cairosvg import svg2png  # noqa
 from PIL import Image, ImageChops  # noqa
 
-from .runtime_patch import InOutPatch, TimePatch, TurtlePatch
+from .runtime_patch import InOutPatch, RuntimePatch, TimePatch, TurtlePatch
 
 
 def run_file(file_path: str, width: int, height: int):
     """Run the submission file."""
+    script_name = "<solution>"
+    code = None
+
+    decoded_path = os.path.abspath(os.fsdecode(file_path))
+    with io.open_code(decoded_path) as code_file:
+        code = compile(code_file.read(), script_name, "exec")
+
+    run_code = __builtins__["exec"]  # noqa
+
     with (
         TurtlePatch(width, height) as turtle,
         InOutPatch(),
         TimePatch(),
+        RuntimePatch(script_name),
     ):
-        runpy.run_path(file_path)
+        run_globals = dict(
+            __name__=script_name,
+            __file__=script_name,
+            __cached__=None,
+            __doc__=None,
+            __loader__=None,
+            __package__=script_name,
+            __spec__=None,
+        )
+
+        run_code(code, run_globals)
 
         return turtle
 

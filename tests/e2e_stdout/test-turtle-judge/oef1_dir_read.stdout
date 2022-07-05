@@ -18,7 +18,7 @@
 {
  "command": "append-message",
  "message": {
-  "description": "Error executing submission script: 'unterminated string literal (detected at line 2) (<solution>, line 2)'.",
+  "description": "Error executing submission script: ''NoneType' object is not callable'.",
   "format": "text"
  }
 }

@@ -52,7 +52,7 @@ with Judgement():
         ):
             try:
                 svg_submission = generate_svg_byte_stream(config.source, config.canvas_width, config.canvas_height)
-            except Exception as e:
+            except BaseException as e:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
                     description=f"Error executing submission script: '{e}'.",
@@ -60,7 +60,7 @@ with Judgement():
                 ) from e
             try:
                 svg_solution = generate_svg_byte_stream(config.solution_file, config.canvas_width, config.canvas_height)
-            except Exception as e:
+            except BaseException as e:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
                     permission=MessagePermission.STAFF,

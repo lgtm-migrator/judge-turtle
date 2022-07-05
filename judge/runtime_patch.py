@@ -95,8 +95,44 @@ class InOutPatch(Patch):  # noqa: R0903
     def patch(self):
         """Patch generator."""
         old_in, old_out, old_err = sys.stdin, sys.stdout, sys.stderr
+        __old_in__, __old_out__, __old_err__ = sys.__stdin__, sys.__stdout__, sys.__stderr__
         try:
             sys.stdin, sys.stdout, sys.stderr = StringIO(), StringIO(), StringIO()
+            __old_in__, __old_out__, __old_err__ = sys.stdin, sys.stdout, sys.stderr
             yield sys.stdin, sys.stdout, sys.stderr
         finally:
             sys.stdin, sys.stdout, sys.stderr = old_in, old_out, old_err
+            sys.__stdin__, sys.__stdout__, sys.__stderr__ = __old_in__, __old_out__, __old_err__
+
+
+class RuntimePatch(Patch):  # noqa: R0903
+    """Patch the python runtime."""
+
+    def __init__(self, name: str):
+        """Create runtime patch with provided name."""
+        self.name = name
+        super().__init__()
+
+    def patch(self):
+        """Patch generator."""
+        old_os = sys.modules["os"]
+        old_io = sys.modules["io"]
+        old_open = __builtins__["open"]
+        old_eval = __builtins__["eval"]
+        old_exec = __builtins__["exec"]
+        old_argv = sys.argv
+        try:
+            sys.modules["os"] = None
+            sys.modules["io"] = None
+            __builtins__["open"] = None
+            __builtins__["eval"] = None
+            __builtins__["exec"] = None
+            sys.argv = [self.name]
+            yield
+        finally:
+            sys.modules["os"] = old_os
+            sys.modules["io"] = old_io
+            __builtins__["open"] = old_open
+            __builtins__["eval"] = old_eval
+            __builtins__["exec"] = old_exec
+            sys.argv = old_argv
