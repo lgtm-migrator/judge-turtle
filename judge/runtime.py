@@ -2,7 +2,7 @@
 
 import runpy
 import sys
-from io import BytesIO
+from io import BytesIO, StringIO
 from typing import Any
 
 from cairosvg import svg2png  # noqa
@@ -26,11 +26,19 @@ def monkey_patch() -> SvgTurtle:
 
 def run_file(file_path: str):
     """Run the submission file."""
-    turtle_instance = monkey_patch()
+    old_in, old_out, old_err = sys.stdin, sys.stdout, sys.stderr
 
-    runpy.run_path(file_path)
+    try:
+        output = StringIO()
+        sys.stdin, sys.stdout, sys.stderr = output, output, output
 
-    return turtle_instance
+        turtle_instance = monkey_patch()
+
+        runpy.run_path(file_path)
+
+        return turtle_instance
+    finally:
+        sys.stdin, sys.stdout, sys.stderr = old_in, old_out, old_err
 
 
 def generate_svg_byte_stream(file_path: str) -> bytes:
@@ -51,6 +59,6 @@ def diff_images(image1: Image.Image, image2: Image.Image) -> tuple[int, int]:
     diff = ImageChops.difference(image1, image2)
 
     hist = diff.histogram()
-    correct_pixels = hist[0] + hist[256] + hist[256 * 2] + hist[256 * 3]
+    correct_pixels = hist[256 * 0] + hist[256 * 1] + hist[256 * 2] + hist[256 * 3]
     total_pixels = sum(hist)
     return correct_pixels, total_pixels
