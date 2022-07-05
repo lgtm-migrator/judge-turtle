@@ -76,11 +76,12 @@ class TimePatch(Patch):  # noqa: R0903
     def patch(self):
         """Patch generator."""
         time_module: Any = sys.modules["time"]
+        old_sleep = time_module.sleep
         try:
-            sys.modules["time"] = None
+            time_module.sleep = lambda x: None
             yield
         finally:
-            sys.modules["time"] = time_module
+            time_module.sleep = old_sleep
 
 
 class InOutPatch(Patch):  # noqa: R0903
