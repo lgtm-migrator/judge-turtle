@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ROOT="$(dirname $(dirname $0))"
+ROOT="$(dirname "$(dirname "$0")")"
 
-cd "$ROOT"
+cd "$ROOT" || exit
 
 git submodule update --init
 

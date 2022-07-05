@@ -1,10 +1,10 @@
 #!/bin/bash
 
-ROOT="$(dirname $(dirname $0))"
+ROOT="$(dirname "$(dirname "$0")")"
 
-cd "$ROOT"
+cd "$ROOT" || exit
 
 pytest \
     --pylama \
-    --ignore="tests"\
-    $@
+    --ignore="tests" \
+    "$@"
