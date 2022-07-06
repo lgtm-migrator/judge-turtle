@@ -63,6 +63,12 @@ class TurtlePatch(Patch):  # noqa: R0903
         try:
             screen = SvgTurtle._Screen(Canvas(self.width, self.height))  # noqa: W0212
             screen.cv.config(bg="")
+            screen.setworldcoordinates(
+                -(screen.window_width() / 2) + 0.5,
+                -(screen.window_height() / 2) - 0.5,
+                +(screen.window_width() / 2) + 0.5,
+                +(screen.window_height() / 2) - 0.5,
+            )
 
             class CustomTurtle(SvgTurtle):
                 """Custom Turtle class, of which each instance shares the same screen."""
