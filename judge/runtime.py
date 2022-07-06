@@ -53,7 +53,7 @@ def generate_png_image(svg_bytes: bytes, width: int, height: int) -> Image.Image
     """Generate PNG image from SVG bytes."""
     png_bytes = BytesIO()
     svg2png(bytestring=svg_bytes, write_to=png_bytes, output_width=width, output_height=height)
-    return Image.open(png_bytes)
+    return Image.open(png_bytes).convert('RGBA')
 
 
 def diff_images(image1: Image.Image, image2: Image.Image) -> tuple[int, int]:
