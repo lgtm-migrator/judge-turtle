@@ -71,7 +71,7 @@ with Judgement():
             png_submission = generate_png_image(svg_submission, config.canvas_width, config.canvas_height)
             png_solution = generate_png_image(svg_solution, config.canvas_width, config.canvas_height)
 
-            correct_pixels, total_pixels = diff_images(png_submission, png_solution)
+            correct_pixels, total_pixels, expected_total = diff_images(png_submission, png_solution)
 
             base64_submission = base64.b64encode(svg_submission).decode("utf-8")
             base64_solution = base64.b64encode(svg_solution).decode("utf-8")
@@ -98,9 +98,11 @@ with Judgement():
                     "format": MessageFormat.HTML,
                     "description": " ".join(html.split()),
                 },
-                f"{total_pixels}/{total_pixels} pixels correct",
+                f"{expected_total}/{expected_total} (100.0%) foreground pixels correct",
             ) as test:
-                test.generated = f"{correct_pixels}/{total_pixels} pixels correct"
+                test.generated = (
+                    f"{correct_pixels}/{total_pixels} ({correct_pixels / total_pixels:.1%}) foreground pixels correct"
+                )
 
                 if correct_pixels < total_pixels:
                     test.status = config.translator.error_status(ErrorType.WRONG)

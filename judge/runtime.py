@@ -53,17 +53,14 @@ def generate_png_image(svg_bytes: bytes, width: int, height: int) -> Image.Image
     """Generate PNG image from SVG bytes."""
     png_bytes = BytesIO()
     svg2png(bytestring=svg_bytes, write_to=png_bytes, output_width=width, output_height=height)
-    return Image.open(png_bytes).convert('RGBA')
+    return Image.open(png_bytes).convert("RGBA")
 
 
-def diff_images(image1: Image.Image, image2: Image.Image) -> tuple[int, int]:
+def diff_images(submission: Image.Image, solution: Image.Image) -> tuple[int, int, int]:
     """Generate difference between two images, and return the number differing pixels."""
-    diff = ImageChops.difference(image1, image2)
+    wrong_pixels = np.count_nonzero(np.array(ImageChops.difference(submission, solution)).any(axis=-1))
+    total_non_transparent_pixels = np.count_nonzero(np.array(submission).any(axis=-1) | np.array(solution).any(axis=-1))
+    correct_non_transparent_pixels = total_non_transparent_pixels - wrong_pixels
+    expected_non_transparent_pixels = np.count_nonzero(np.array(solution).any(axis=-1))
 
-    arr = np.array(diff)  # Make into Numpy array
-
-    wrong_pixels = np.count_nonzero(arr.any(axis=-1))
-    total_pixels = arr.shape[0] * arr.shape[1]
-    correct_pixels = total_pixels - wrong_pixels
-
-    return correct_pixels, total_pixels
+    return correct_non_transparent_pixels, total_non_transparent_pixels, expected_non_transparent_pixels
