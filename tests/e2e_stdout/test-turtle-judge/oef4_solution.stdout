@@ -13,7 +13,7 @@
  "accepted": false,
  "command": "close-judgement",
  "status": {
-  "enum": "internal error",
-  "human": "Interne fout"
+  "enum": "runtime error",
+  "human": "Gecrasht bij testen"
  }
 }

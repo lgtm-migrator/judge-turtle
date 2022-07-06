@@ -39,7 +39,7 @@ with Judgement():
 
     if not os.path.exists(config.solution_file):
         raise DodonaException(
-            config.translator.error_status(ErrorType.INTERNAL_ERROR),
+            config.translator.error_status(ErrorType.RUNTIME_ERROR),
             permission=MessagePermission.STAFF,
             description=f"Could not find solution file: '{config.solution_file}'.",
             format=MessageFormat.TEXT,
