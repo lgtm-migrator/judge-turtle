@@ -11,13 +11,13 @@ class TestTranslator(unittest.TestCase):
 
     def test_translate(self):
         self.assertEqual(
-            Translator.from_str("nl").translate(Translator.Text.ADD_A_SEMICOLON),
-            "Voeg een puntkomma ';' toe aan het einde van elke SQL query.",
+            Translator.from_str("nl").translate(Translator.Text.COMPARING_IMAGES),
+            "Afbeeldingen vergelijken",
         )
 
         self.assertEqual(
-            Translator.from_str("en").translate(Translator.Text.ADD_A_SEMICOLON),
-            "Add a semicolon ';' at the end of each SQL query.",
+            Translator.from_str("en").translate(Translator.Text.COMPARING_IMAGES),
+            "Comparing images",
         )
 
     def test_human_error(self):

@@ -45,28 +45,28 @@ with Judgement():
             format=MessageFormat.TEXT,
         )
 
-    with Tab("Comparing PNGs"):
+    with Tab(config.translator.translate(Translator.Text.COMPARING_IMAGES)):
         with Context(), TestCase(
             format=MessageFormat.PYTHON,
             description="",
         ):
             try:
                 svg_submission = generate_svg_byte_stream(config.source, config.canvas_width, config.canvas_height)
-            except BaseException as e:
+            except BaseException as error:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
-                    description=f"Error executing submission script: '{e}'.",
-                    format=MessageFormat.TEXT,
-                ) from e
+                    description=config.translator.translate(Translator.Text.SOLUTION_EXECUTION_ERROR, error=error),
+                    format=MessageFormat.CODE,
+                ) from error
             try:
                 svg_solution = generate_svg_byte_stream(config.solution_file, config.canvas_width, config.canvas_height)
-            except BaseException as e:
+            except BaseException as error:
                 raise DodonaException(
                     config.translator.error_status(ErrorType.COMPILATION_ERROR),
                     permission=MessagePermission.STAFF,
-                    description=f"Error executing solution script: '{e}'.",
-                    format=MessageFormat.TEXT,
-                ) from e
+                    description=config.translator.translate(Translator.Text.SUBMISSION_EXECUTION_ERROR, error=error),
+                    format=MessageFormat.CODE,
+                ) from error
 
             png_submission = generate_png_image(svg_submission, config.canvas_width, config.canvas_height)
             png_solution = generate_png_image(svg_solution, config.canvas_width, config.canvas_height)
@@ -78,14 +78,14 @@ with Judgement():
 
             html = f"""
             <div style="display:inline-block;width:50%;">
-                <p style="padding:10px">Submission:</p>
+                <p style="padding:10px">{config.translator.translate(Translator.Text.SUBMISSION_TITLE)}</p>
                 <img
                     alt="submission result"
                     style="width:98%;background-color:#fff"
                     src="data:image/svg+xml;base64,{base64_submission}" />
             </div>
             <div style="display:inline-block;float:right;width:50%;">
-                <p style="padding:10px">Solution:</p>
+                <p style="padding:10px">{config.translator.translate(Translator.Text.SOLUTION_TITLE)}</p>
                 <img
                     alt="solution result"
                     style="width:98%;background-color:#fff"
@@ -98,10 +98,18 @@ with Judgement():
                     "format": MessageFormat.HTML,
                     "description": " ".join(html.split()),
                 },
-                f"{expected_total}/{expected_total} (100.0%) foreground pixels correct",
+                config.translator.translate(
+                    Translator.Text.FOREGROUND_PIXELS_CORRECT,
+                    correct_pixels=expected_total,
+                    total_pixels=expected_total,
+                    fraction=1,
+                ),
             ) as test:
-                test.generated = (
-                    f"{correct_pixels}/{total_pixels} ({correct_pixels / total_pixels:.1%}) foreground pixels correct"
+                test.generated = config.translator.translate(
+                    Translator.Text.FOREGROUND_PIXELS_CORRECT,
+                    correct_pixels=correct_pixels,
+                    total_pixels=total_pixels,
+                    fraction=correct_pixels / total_pixels,
                 )
 
                 if correct_pixels < total_pixels:

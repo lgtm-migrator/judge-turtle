@@ -3,7 +3,7 @@
 }
 {
  "command": "start-tab",
- "title": "Comparing PNGs"
+ "title": "Afbeeldingen vergelijken"
 }
 {
  "command": "start-context"
@@ -18,14 +18,14 @@
 {
  "command": "start-test",
  "description": {
-  "description": "<div style=\"display:inline-block;width:50%;\"> <p style=\"padding:10px\">Submission:</p> <img alt=\"submission result\" style=\"width:98%;background-color:#fff\" src=\"data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSIyNTBweCIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxjbGlwUGF0aCBpZD0iYm9yZGVyX2NsaXAiPjxyZWN0IGhlaWdodD0iMjUwIiB3aWR0aD0iNDAwIiB4PSIwIiB5PSIwIiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxyZWN0IGZpbGw9IiMwMDAwZmYiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiIHg9IjAiIHk9IjAiIC8+PC9zdmc+\" /> </div> <div style=\"display:inline-block;float:right;width:50%;\"> <p style=\"padding:10px\">Solution:</p> <img alt=\"solution result\" style=\"width:98%;background-color:#fff\" src=\"data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSIyNTBweCIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxjbGlwUGF0aCBpZD0iYm9yZGVyX2NsaXAiPjxyZWN0IGhlaWdodD0iMjUwIiB3aWR0aD0iNDAwIiB4PSIwIiB5PSIwIiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxwb2x5bGluZSBjbGlwLXBhdGg9InVybCgjYm9yZGVyX2NsaXApIiBmaWxsPSJub25lIiBwb2ludHM9IjIwMC4wLDEyNS4wIDI1MC4wLDEyNS4wIDI1MC4wLDc1LjAgMjAwLjAsNzUuMCAyMDAuMCwxMjUuMCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEiIC8+PC9zdmc+\" /> </div>",
+  "description": "<div style=\"display:inline-block;width:50%;\"> <p style=\"padding:10px\">Oplossing:</p> <img alt=\"submission result\" style=\"width:98%;background-color:#fff\" src=\"data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSIyNTBweCIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxjbGlwUGF0aCBpZD0iYm9yZGVyX2NsaXAiPjxyZWN0IGhlaWdodD0iMjUwIiB3aWR0aD0iNDAwIiB4PSIwIiB5PSIwIiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxyZWN0IGZpbGw9IiMwMDAwZmYiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiIHg9IjAiIHk9IjAiIC8+PC9zdmc+\" /> </div> <div style=\"display:inline-block;float:right;width:50%;\"> <p style=\"padding:10px\">Indiening:</p> <img alt=\"solution result\" style=\"width:98%;background-color:#fff\" src=\"data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSIyNTBweCIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxjbGlwUGF0aCBpZD0iYm9yZGVyX2NsaXAiPjxyZWN0IGhlaWdodD0iMjUwIiB3aWR0aD0iNDAwIiB4PSIwIiB5PSIwIiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxwb2x5bGluZSBjbGlwLXBhdGg9InVybCgjYm9yZGVyX2NsaXApIiBmaWxsPSJub25lIiBwb2ludHM9IjIwMC4wLDEyNS4wIDI1MC4wLDEyNS4wIDI1MC4wLDc1LjAgMjAwLjAsNzUuMCAyMDAuMCwxMjUuMCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEiIC8+PC9zdmc+\" /> </div>",
   "format": "html"
  },
- "expected": "400/400 (100.0%) foreground pixels correct"
+ "expected": "400/400 (100.0%) zichtbare pixels correct"
 }
 {
  "command": "close-test",
- "generated": "0/100000 (0.0%) foreground pixels correct",
+ "generated": "0/100000 (0.0%) zichtbare pixels correct",
  "status": {
   "enum": "wrong",
   "human": "Test gefaald"

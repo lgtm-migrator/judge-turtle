@@ -22,26 +22,12 @@ class Translator:
     class Text(Enum):
         """Text message content enum."""
 
-        ADD_A_SEMICOLON = auto()
-        INVALID_SINGLE_QUOTE_TABLE_NAME = auto()
-        SUBMISSION_WRONG_QUERY_TYPE = auto()
-        SUBMISSION_FORBIDDEN_SYMBOLREGEX = auto()
-        SUBMISSION_MANDATORY_SYMBOLREGEX = auto()
-        SUBMISSION_FORBIDDEN_FULLREGEX = auto()
-        SUBMISSION_MANDATORY_FULLREGEX = auto()
-        SUBMISSION_CONTAINS_MORE_QUERIES = auto()
-        SUBMISSION_CONTAINS_LESS_QUERIES = auto()
-        DIFFERENT_ROW_COUNT = auto()
-        DIFFERENT_COLUMN_COUNT = auto()
-        COMPARING_QUERY_OUTPUT_CSV_CONTENT = auto()
-        COMPARING_QUERY_OUTPUT_TYPES = auto()
-        QUERY_SHOULD_ORDER_ROWS = auto()
-        QUERY_SHOULD_NOT_ORDER_ROWS = auto()
-        ROWS_ARE_BEING_ORDERED = auto()
-        ROWS_ARE_NOT_BEING_ORDERED = auto()
-        CORRECT_ROWS_WRONG_ORDER = auto()
-        COMPARING_TABLE_LAYOUT = auto()
-        COMPARING_TABLE_CONTENT = auto()
+        COMPARING_IMAGES = auto()
+        SOLUTION_EXECUTION_ERROR = auto()
+        SUBMISSION_EXECUTION_ERROR = auto()
+        SOLUTION_TITLE = auto()
+        SUBMISSION_TITLE = auto()
+        FOREGROUND_PIXELS_CORRECT = auto()
 
     def __init__(self, language: Language) -> None:
         """Create Translator.
@@ -136,9 +122,21 @@ class Translator:
 
     text_translations = {
         Language.EN: {
-            Text.ADD_A_SEMICOLON: "Add a semicolon ';' at the end of each SQL query.",
+            Text.COMPARING_IMAGES: "Comparing images",
+            Text.SOLUTION_EXECUTION_ERROR: "Error executing solution script:\n    {error}",
+            Text.SUBMISSION_EXECUTION_ERROR: "Error executing submission script:\n    {error}",
+            Text.SOLUTION_TITLE: "Submission:",
+            Text.SUBMISSION_TITLE: "Solution:",
+            Text.FOREGROUND_PIXELS_CORRECT: "{correct_pixels}/{total_pixels} "
+            "({fraction:.1%}) visible pixels correct",
         },
         Language.NL: {
-            Text.ADD_A_SEMICOLON: "Voeg een puntkomma ';' toe aan het einde van elke SQL query.",
+            Text.COMPARING_IMAGES: "Afbeeldingen vergelijken",
+            Text.SOLUTION_EXECUTION_ERROR: "Error bij het uitvoeren van het oplossingsscript:\n    {error}",
+            Text.SUBMISSION_EXECUTION_ERROR: "Error bij het uitvoeren van het ingediende script:\n    {error}",
+            Text.SOLUTION_TITLE: "Indiening:",
+            Text.SUBMISSION_TITLE: "Oplossing:",
+            Text.FOREGROUND_PIXELS_CORRECT: "{correct_pixels}/{total_pixels} "
+            "({fraction:.1%}) zichtbare pixels correct",
         },
     }

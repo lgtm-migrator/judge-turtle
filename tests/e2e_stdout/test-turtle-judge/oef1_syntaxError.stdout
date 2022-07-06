@@ -3,7 +3,7 @@
 }
 {
  "command": "start-tab",
- "title": "Comparing PNGs"
+ "title": "Afbeeldingen vergelijken"
 }
 {
  "command": "start-context"
@@ -18,8 +18,8 @@
 {
  "command": "append-message",
  "message": {
-  "description": "Error executing submission script: 'unterminated string literal (detected at line 2) (<solution>, line 2)'.",
-  "format": "text"
+  "description": "Error bij het uitvoeren van het oplossingsscript:\n    unterminated string literal (detected at line 2) (<solution>, line 2)",
+  "format": "code"
  }
 }
 {
