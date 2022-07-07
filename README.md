@@ -13,20 +13,11 @@
 > * <https://github.com/dodona-edu/example-exercises>  # TODO
 >
 
-## Table of Contents
-
-* [Recommended exercise directory structure](#recommended-exercise-directory-structure)
-* [Recommended `dirconfig.json`](#recommended-dirconfigjson)
-* [Recommended `config.json` (example with default settings)](#recommended-configjson-example-with-default-settings)
-* [Optional `evaluation` settings in `config.json`](#optional-evaluation-settings-in-configjson)
-* [Generator script](#generator-script)
-* [Contributors](#contributors)
-
 ### Judge features
 
 * Comparison based on solution Python file
 * Submission and solution image shown side-by-side
-* Absolute difference and percentage of mismatched visible (non-transparant) pixels.
+* Absolute difference and percentage of mismatched visible (non-transparant) pixels
 * Option to set custom canvas size in `config.json`
 * Feedback in language of user (Dutch or English)
 
@@ -37,6 +28,15 @@
 * Judge accepts solution independent of code. The judge doesn't make a destination between e.g. square drawn with for-loop or not. If a figure is drawn clockwise or counterclockwise it's treated equally.
 * Support for transparency.
 * Script available to convert `solution.py` to svg image for exercise description.
+
+## Table of Contents
+
+* [Recommended exercise directory structure](#recommended-exercise-directory-structure)
+* [Recommended `dirconfig.json`](#recommended-dirconfigjson)
+* [Recommended `config.json` (example with default settings)](#recommended-configjson-example-with-default-settings)
+* [Optional `evaluation` settings in `config.json`](#optional-evaluation-settings-in-configjson)
+* [Generator script](#generator-script)
+* [Contributors](#contributors)
 
 ## Recommended exercise directory structure
 
@@ -56,7 +56,7 @@ necessary files are marked with `▶` in the tree structure below.
 |   |   +-- 📂evaluation                # -- 🔽️ ADD YOUR SOLUTION HERE 🔽 --
 |   |   |   +-- solution.py              # ▶ The Python Turtle model solution file
 |   |   +-- 📂solution                  # Optional: This will be visible in Dodona for teachers
-|   |   |   +-- solution.sql             # Optional: The Python Turtle model solution file
+|   |   |   +-- solution.py              # Optional: The Python Turtle model solution file
 |   |   +-- 📂description               #
 |   |       +-- description.nl.md        # ▶ The description in Dutch
 |   |       +-- description.en.md        # Optional: The description in English
@@ -79,7 +79,8 @@ necessary files are marked with `▶` in the tree structure below.
     "access": "public",
     "evaluation": {
         "handler": "turtle",
-        "time_limit": 10
+        "time_limit": 10,
+        "memory_limit": 50000000
     },
     "labels": [
         "turtle"
@@ -128,7 +129,7 @@ If these settings are not defined, the default value is chosen.
 The svg images for each exercise can be made with a Python script. Place the script at the root of your folder with exercises.
 
 ````python
-# TODO
+# TODO, see https://github.com/BTWS2/judge-turtle/issues/16
 ````
 
 #### Show svg image in Dodona description
