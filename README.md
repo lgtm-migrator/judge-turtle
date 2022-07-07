@@ -6,12 +6,21 @@
 >
 > This Dodona course contains some sample exercises that were used in developing the Python Turtle judge:
 >
-> * https://dodona.ugent.be/en/courses/TODO/
+> * <https://dodona.ugent.be/en/courses/TODO/>
 >
 > There are a number of sample exercises on Dodona's sample exercises repository to demonstrate the use of the judge:
 >
-> * https://github.com/dodona-edu/example-exercises  # TODO
+> * <https://github.com/dodona-edu/example-exercises>  # TODO
 >
+
+## Table of Contents
+
+* [Recommended exercise directory structure](#recommended-exercise-directory-structure)
+* [Recommended `dirconfig.json`](#recommended-dirconfigjson)
+* [Recommended `config.json` (example with default settings)](#recommended-configjson-example-with-default-settings)
+* [Optional `evaluation` settings in `config.json`](#optional-evaluation-settings-in-configjson)
+* [Generator script](#generator-script)
+* [Contributors](#contributors)
 
 ### Judge features
 
@@ -124,13 +133,13 @@ The svg images for each exercise can be made with a Python script. Place the scr
 
 #### Show svg image in Dodona description
 
-- Markdown (recommended)
+* Markdown (recommended)
 
 ```markdown
 ![image_name](./media/image_name.svg){:height="50%" width="50%"}{: style="border-style: inset"}
 ```
 
-- HTML
+* HTML
 
 ```html
 <img src="./media/image_name.svg" alt="image_name" height="50%" width="50%" style="border-style: inset">
@@ -138,8 +147,8 @@ The svg images for each exercise can be made with a Python script. Place the scr
 
 ## Contributors
 
-- **T. Ramlot**
-- B. Willems
+* **T. Ramlot**
+* B. Willems
 
-_Development funded by the [Faculty of Engineering and Architecture](https://www.ugent.be/ea/en)
-of [Ghent University](https://www.ugent.be/en)_
+*Development funded by the [Faculty of Engineering and Architecture](https://www.ugent.be/ea/en)
+of [Ghent University](https://www.ugent.be/en)*
