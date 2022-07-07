@@ -2,7 +2,7 @@
 
 > ***Python Turtle** graphics is a popular way for introducing programming to kids. This judge aims to provide **feedback** for these students during the learning experience and evaluations. How similar is the submission of the student to the solution of the teacher?*
 >
-> ![Python Turtle judge demo](judge-turtle.png)
+> ![Python Turtle judge demo](judge-turtle2.png)
 >
 > This Dodona course contains some sample exercises that were used in developing the Python Turtle judge:
 >
