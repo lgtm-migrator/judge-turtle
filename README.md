@@ -149,6 +149,7 @@ The svg images for each exercise can be made with a Python script. Place the scr
 ## Contributors
 
 * **T. Ramlot**
+* [Don Kirkby](https://donkirkby.github.io/) (author of [svg-turtle](https://github.com/donkirkby/svg-turtle))
 * B. Willems
 
 *Development funded by the [Faculty of Engineering and Architecture](https://www.ugent.be/ea/en)
