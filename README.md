@@ -6,7 +6,7 @@
 >
 > This Dodona course contains some sample exercises that were used in developing the Python Turtle judge:
 >
-> * <https://dodona.ugent.be/en/courses/TODO/>
+> * <https://dodona.ugent.be/en/courses/1468/>
 >
 > There are a number of sample exercises on Dodona's sample exercises repository to demonstrate the use of the judge:
 >
